@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres
+    container_name: db_task
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=j15o11
+      - POSTGRES_DB=seec_tasks
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
