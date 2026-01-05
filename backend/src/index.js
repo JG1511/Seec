@@ -2,6 +2,7 @@ import express from "express"
 // import { getTarefas } from "./scripts.js"
 import { prisma } from "./db.js"
 import cors from 'cors'
+import TaskController from "./controllers/taskController.js"
 
 
 
@@ -16,10 +17,12 @@ app.use(cors({
 }))
 
 // estás funções geralmente recebe dois parâmetros, uma string (geralmente o nome da rota) e outro de callback( que vai ter dois parametros, req e res) 
-app.get('/', async (req, res) => {
-    const tarefa = getTarefas()
-    res.json({ message: "Servidor está rodando", tarefa })
-})
+// app.get('/', async (req, res) => {
+//     const tarefa = getTarefas()
+//     res.json({ message: "Servidor está rodando", tarefa })
+// })
+
+app.get('/teste', TaskController.getTask)
 
 app.get('/listar_task', async (req, res) => {
     // res.json('rota para listar ')
