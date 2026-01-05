@@ -23,6 +23,20 @@ app.use(cors({
 // })
 
 app.get('/teste', TaskController.getTask)
+app.post('/teste_criar', TaskController.creatTask)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get('/listar_task', async (req, res) => {
     // res.json('rota para listar ')

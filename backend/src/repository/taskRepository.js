@@ -1,22 +1,25 @@
 import { prisma } from "../db.js"
 
-class TaskRepository{
-    findAll(){
-        // new Promise((resolve,reject) =>{
-        //     const resultado = prisma.tarefas.findMany();   
-        //     return resolve(resultado)
-        // })
-
-        const result = prisma.tarefas.findMany()
+class TaskRepository {
+    async findAll() {
+        const result = await prisma.tarefas.findMany()
         return result
     }
-    create(){}
-    update(){}
-    findId(){}
-    delete(){}
+    async create(titulo, concluido) {
+        const new_task = await prisma.tarefas.create({
+            data: {
+                titulo: titulo,
+                concluido: concluido
+            }
+        })
+
+        return new_task
+    }
+    update() { }
+    findId() { }
+    delete() { }
 }
 
-export default  new TaskRepository()
+export default new TaskRepository()
 
 
- 
