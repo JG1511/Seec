@@ -19,7 +19,7 @@ class TaskService {
     }
 
     async deletar_task(id) {
-        const linha = TaskRepository.delete(id)
+        TaskRepository.delete(id)
     }
 }
 
