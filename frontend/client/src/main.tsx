@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element : <EditTaskPage />
   },
   {
-    path: "/",
+    path: "/new",
     element: <App />
   }
 ]);

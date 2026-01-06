@@ -1,7 +1,7 @@
 import { api } from "../../services/api"
-import { useSearchParams, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function EditTaskPage() {
 
@@ -9,16 +9,14 @@ function EditTaskPage() {
     const { id } = useParams();
     const navigate = useNavigate()
 
-    const titulo = useRef();
+    const titulo = useRef<HTMLInputElement | any>(null);
 
-    async function editTask(id: string) {
-        console.log("orodou")
-        console.log(api)
+    async function editTask(id: string | undefined) {
         await api.put(`/editar_task/${id}`, {
             titulo: titulo.current.value,
             concluido: true
         })
-        navigate('/');
+        navigate('/new');
     }
 
     return (
@@ -27,8 +25,8 @@ function EditTaskPage() {
                 <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Editar Tarefa: </h1>
                 <div className="mb-4">
                     <form onSubmit={(e) => e.preventDefault()}>
-                        <input type="text" name="titulo" ref={titulo} placeholder="Nova tarefa" className="grow px-3 py-2 border rounded-l-lg focus: outline-none"/>
-                        <button type="button" onClick={() => editTask(id)}className="bg-blue-500 text-white px-4 py-2 rounded-r-lg">Confirmar</button>
+                        <input type="text" name="titulo" ref={titulo} placeholder="Nova tarefa" className="grow px-3 py-2 border rounded-l-lg focus: outline-none" />
+                        <button type="button" onClick={() => editTask(id)} className="bg-blue-500 text-white px-4 py-2 rounded-r-lg">Confirmar</button>
                     </form>
                 </div>
 

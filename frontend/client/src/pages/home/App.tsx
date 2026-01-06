@@ -17,7 +17,7 @@ function App() {
   const [task, setTask] = useState<TaskType[]>([])
 
   // esse caba aqui vai servir para pegar o input do usuário
-  const inputTitulo = useRef();
+  const inputTitulo = useRef<HTMLInputElement | any >(null);
 
   async function getTask() {
     // Aqui criamos uma variavel  para pegar os "dados" e armazenar no arry de tarefas
@@ -59,7 +59,7 @@ function App() {
       <div className="bg-white shadow-lg rounded-3xl py-10 px-4" >
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">Cadastrar Tarefas ✅</h2>
         <div className="mb-4 flex">
-          <form action="">
+          <form action="" onSubmit={(e) => e.preventDefault()}>
             {/* <label htmlFor="">Titulo:</label> */}
             <input type="text" name="titulo" ref={inputTitulo} placeholder="Nova tarefa" className="grow px-3 py-2 border rounded-l-lg focus: outline-none " />
             <button className="bg-blue-500 text-white px-4 py-2 rounded-r-lg" type="button" onClick={createTask}>Cadastrar</button>
