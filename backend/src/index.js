@@ -24,6 +24,8 @@ app.use(cors({
 
 app.get('/teste', TaskController.getTask)
 app.post('/teste_criar', TaskController.creatTask)
+app.put('/teste_editar/:id', TaskController.updateTask)
+app.delete('/teste_deletar/:id', TaskController.deleteTask)
 
 
 
